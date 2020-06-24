@@ -1,0 +1,20 @@
+<table *ngFor="let category of (categories | keyvalue)">
+  <caption></caption>
+  <thead>
+    <th scope="rowgroup">{{category.key}}</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of (category.value | toSquareMatrix)">
+      <td *ngFor="let language of row">
+        <div>{{language.name}}</div>
+        <div>
+          <div><a [routerLink]="['details', language.name]">Go to details</a></div>
+          <div>Number of hits: {{language.likes}}</div>
+          <button (click)="like(language)">like</button>
+          <button (click)="dislike(language)">dislike</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+  <br>
+</table>
